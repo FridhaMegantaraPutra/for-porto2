@@ -1,4 +1,6 @@
 # Python In-built packages
+import string
+import random
 from pathlib import Path
 import PIL
 
@@ -17,6 +19,7 @@ import time
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import uuid
 
 
 # Local Modules
@@ -283,19 +286,32 @@ def send_email(penerima):
 st.title("Object Detection using YOLOv8")
 
 
-penerima = st.text_input(
-    "Enter receiver's email (wajob di isi):", key="receiver_email_1")
+# Generate a random key
+random_key = ''.join(random.choices(
+    string.ascii_letters + string.digits, k=10))
+
+# Use the random key for your widget
+penerima = st.text_input("Receiver Email 1")
 
 
 # Sidebar
 st.sidebar.header("ML Model Config")
 
-# Model Options
-model_type = st.sidebar.radio(
-    "Select Task", ['Detection'])
 
+# Generate a random key
+radio_key = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
+
+# Use the random key for your st.radio widget
+model_type = st.sidebar.radio("Select Task", options=[
+                              "Detection"], key=radio_key)
+
+# Generate a random key for the slider
+slider_key = ''.join(random.choices(
+    string.ascii_letters + string.digits, k=10))
+
+# Use the random key for your st.slider widget
 confidence = float(st.sidebar.slider(
-    "Select Model Confidence", 25, 100, 40)) / 100
+    "Select Model Confidence", 25, 100, 40, key=slider_key)) / 100
 
 # Selecting Detection Or Segmentation
 if model_type == 'Detection':
