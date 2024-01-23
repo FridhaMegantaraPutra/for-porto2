@@ -284,7 +284,8 @@ st.title("Object Detection using YOLOv8")
 
 
 penerima = st.text_input(
-    "Enter receiver's email , wajob di isi contoh:", 'email@gmail.com')
+    "Enter receiver's email (wajob di isi):", key="receiver_email_1")
+
 
 # Sidebar
 st.sidebar.header("ML Model Config")
