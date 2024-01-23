@@ -1,5 +1,6 @@
 # Python In-built packages
 import string
+import dill
 import random
 from pathlib import Path
 import PIL
